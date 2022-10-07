@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +15,18 @@ use App\Http\Controllers\HomeController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/register', function () {
+    return view('Login.register-web');
+});
+Route::get('/forgot-password', function () {
+    return view('Login.forgot-password');
+});
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/login', [LoginController::class, 'halamanlogin'])->name('  login');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
